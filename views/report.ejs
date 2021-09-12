@@ -1,0 +1,132 @@
+<%- include('../templates/mainPage.ejs') %>
+    <div class="report-main-content">
+        <div class="fliter-div">
+            <div class="filters">
+                <form autocomplete="off" method="post">
+                    <div>
+                        <input type="date" name="report_from_date" value="">
+                        <span>&nbsp;From</span>
+                    </div>
+                    <div>
+                        <input type="date" name="report_to_date" value="">
+                        <span>&nbsp;To</span>
+                    </div>
+                    <div>
+                        <select name="report_role">
+                    <option value="" hidden selected></option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="Student">Student</option>
+                </select>
+                        <span>&nbsp;Type</span>
+                    </div>
+                    <div>
+                        <select name="report_department" id="search_department">
+                    <option value="" hidden selected></option>
+                    <option value="CSE"> Computer Science &amp; Engg</option>
+                    <option value="MECH">Mechanical Engg</option>
+                    <option value="ECE">Electronics &amp; Communications Engg</option>
+                    <option value="CIVIL">Civil Engg</option>
+                    <option value="EEE">Electrical &amp; Electronics Engg
+                    </option>
+                </select>
+                        <span>&nbsp;Department</span>
+                    </div>
+
+                    <div>
+                        <input type="text" name="report_role_number" value="">
+                        <span>&nbsp;Roll number</span>
+                    </div>
+                    <div>
+                        <input type="text" name="report_batch" value="">
+                        <span>&nbsp;Batch</span>
+                    </div>
+                    <div>
+                        <input type="text" name="report_book_id" value="">
+                        <span>&nbsp;Book Id</span>
+                    </div>
+                    <div class="filter-search">
+                        <button formaction="/reports/searchdata">Generate</button>
+                        <button formaction="/reports/exportdata">Export</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <% if(export_msg) { %>
+            <div id="export-success">
+                <div>
+                    <p>
+                        <%=export_msg%>
+                    </p>
+                    <br />
+                    <a onclick="export_noted()">OK</a>
+                </div>
+            </div>
+            <% } %>
+                <div class="record-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width='1%'>ID</th>
+                                <th width='13%'>Roll Number</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Batch</th>
+                                <th width='5%'>Book</th>
+                                <th>Book Title</th>
+                                <th>Issued</th>
+                                <th>Return</th>
+                                <th>Delay</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% for(var i=0; i < reports.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= reports[i].id %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].roll_number %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].role %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].department %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].batch %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].book_id %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].book_title %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].issued_date %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].return_date %>
+                                    </td>
+                                    <td>
+                                        <%= reports[i].is_delayed %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                    <% if(reports.length == 0) { %>
+                        <p id='no-record-found-p'>No Record Found</p>
+                        <% } %>
+                </div>
+    </div>
+
+    <!--Template Ending-->
+    </div>
+    </div>
+    <script src="/js/time.js"></script>
+    <script src="/js/Report.js"></script>
+    </body>
+
+    </html>

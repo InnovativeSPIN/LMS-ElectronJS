@@ -1,0 +1,96 @@
+<%- include('../templates/mainPage.ejs') %>
+    <div class="student-record-main-content record-main">
+        <h1>STUDENTS RECORDS</h1>
+        <%- include('../templates/recordLinks.ejs') %>
+
+            <div class="student-record-filters">
+                <form autocomplete="off" action="/record/students" method="post">
+                    <div>
+                        <input type="text" name="search_roll_number" value="">
+                        <span>&nbsp;Register Number</span>
+                    </div>
+                    <div>
+                        <select name="search_department" id="search_department">
+                            <option value="" hidden selected></option>
+                            <option value="CSE"> Computer Science &amp; Engineering</option>
+                            <option value="MECH">Mechanical Engineering</option>
+                            <option value="ECE">Electronics &amp; Communications Engineering</option>
+                            <option value="CIVIL">Civil Engineering</option>
+                            <option value="EEE">Electrical &amp; Electronics Engineering
+                            </option>
+                        </select>
+                        <span>&nbsp;Department</span>
+                    </div>
+                    <div>
+                        <input type="text" name="search_batch" id="search_batch" value=''>
+                        <span>&nbsp;Batch</span>
+                    </div>
+
+                    <!--
+                    <div>
+                        <input type="text" name="search_batch" value=" ">
+                        <span>&nbsp;Batch</span>
+                    </div>
+                    -->
+                    <div><button type="submit">Search</button></div>
+
+                </form>
+
+            </div>
+            <div class="student-recod-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Department</th>
+                            <th>Batch</th>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Date Issued</th>
+                            <th>Validatation Untill</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for(var i=0; i < students.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= students[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= students[i].department %>
+                                </td>
+                                <td>
+                                    <%= students[i].batch %>
+                                </td>
+                                <td>
+                                    <%= students[i].book_id %>
+                                </td>
+                                <td>
+                                    <%= students[i].book_title %>
+                                </td>
+                                <td>
+                                    <%= students[i].date %>
+                                </td>
+                                <td>
+                                    <%= students[i].validation_date %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <% if(students.length == 0) { %>
+                    <p id='no-record-found-p'>No Record Found</p>
+                <% } %>
+            </div>
+    </div>
+
+
+    <!--Template Ending-->
+    </div>
+    </div>
+    <script src="/js/time.js"></script>
+    <script src="/js/RecActive.js"></script>
+    </body>
+
+    </html>

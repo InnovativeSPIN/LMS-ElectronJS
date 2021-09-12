@@ -1,0 +1,16 @@
+.home-main-content {
+    width: 100%;
+    padding-top: 136px;
+}
+
+.home-main-content .wel-msg h2 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: rgb(27, 27, 27);
+    text-align: center;
+}
+
+.home-main-content .wel-msg .sys {
+    color: #FF4500;
+}

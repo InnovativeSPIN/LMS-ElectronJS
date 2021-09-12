@@ -1,0 +1,109 @@
+<%- include('../templates/mainPage.ejs') %>
+    <div class="issue-return-main-content">
+        <div class="issue_return_tab">
+            <button class="irprimary_tablinks" onclick="openissuereturn(event, 'issue')">Issue</button>
+            <button class="irprimary_tablinks" onclick="openissuereturn(event, 'return')">Return</button>
+        </div>
+        <div id="issue" class="irprimary_tabcontent">
+            <div class="issue">
+                <div class="left-issue">
+                    <div class="issue-who">
+                        <div>
+                            <div class="type">
+                                <select name="type" id='role'>
+                            <option value="" hidden></option>
+                            <option value="Student">Student</option>
+                            <option value="Faculty">Faculty</option>
+                        </select>
+                                <span>&nbsp;Type</span>
+                            </div>
+                            <div>
+                                <input autocomplete="off" type="text" name="rollno" id="roll_number">
+                                <span>&nbsp;Roll No</span>
+                            </div>
+                            <div>
+                                <button onclick="stu_facu_issue_check()">Check</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <p id="check-error"></p>
+                    <div style="display: none;" id="issue-book-div">
+                        <button class="issue-btn" onclick="stu_facu_issue()">Issue Book</button>
+                        <button onclick="add_book()" style="color: green;"><i class="fas fa-plus"></i></button>
+                        <button onclick="remove_book()" style="color: red;"><i class="fas fa-minus"></i></button>
+                        <div id='book-id-input'>
+
+                        </div>
+                        <p id="book-issue-message"></p>
+                    </div>
+                </div>
+                <div class="right-issue">
+                    <h3 style="text-align: center;color: tomato;" id="i-detail-head"></h3>
+                    <div class="book-check-detail">
+                        <h4 id="check-detail-rollnumber"></h4>
+                        <h4 id="check-detail-name"></h4>
+                        <h4 id="check-detail-department"></h4>
+                        <h4 id="check-detail-batch"></h4>
+                    </div>
+                    <h5 style="display: none;" id="curr_hold">Current holding books</h5>
+                    <p id='no-book-issue'></p>
+                    <div id="book-issue-check-table"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="return" class="irprimary_tabcontent return">
+            <div class="inner-return">
+                <div class="return-left">
+                    <div class="return-who">
+                        <div class="type">
+                            <select name="type" id="return_role">
+                        <option value="" hidden></option>
+                        <option value="Student">Student</option>
+                        <option value="Faculty">Faculty</option>
+                    </select>
+                            <span>&nbsp;Type</span>
+                        </div>
+                        <div>
+                            <input autocomplete="off" type="text" name="rollno" id="return_roll_number">
+                            <span>&nbsp;Roll No</span>
+                        </div>
+                        <div>
+                            <button onclick="stu_facu_return_check()">Check</button>
+
+                        </div>
+                    </div>
+                    <p id="return-check-error"></p>
+                    <div id="return-check-bokes">
+
+                    </div>
+                    <div id="return-book-btn" style="display: none;">
+                        <button class="issue-btn" onclick="stu_facu_return()">Return Book</button>
+                    </div>
+                </div>
+
+
+                <div class="right-return">
+                    <div class="book-check-detail">
+                        <h3 style="text-align: center;color: tomato;" id="r-detail-head"></h3>
+                        <h4 id="r-check-detail-rollnumber"></h4>
+                        <h4 id="r-check-detail-name"></h4>
+                        <h4 id="r-check-detail-department"></h4>
+                        <h4 id="r-check-detail-batch"></h4>
+                    </div>
+                    <div id="book-issue-check-table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Template Ending-->
+    </div>
+    </div>
+    <script src="/js/time.js"></script>
+    <script src="/js/Issue_Return.js"></script>
+    <script src="/js/TabNav.js"></script>
+    </body>
+
+    </html>

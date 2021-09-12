@@ -1,0 +1,81 @@
+<%- include('../templates/mainPage.ejs') %>
+    <div class="faculty-record-main-content record-main">
+        <h1>FACULTY RECORDS</h1>
+        <%- include('../templates/recordLinks.ejs') %>
+
+            <div class="faculty-record-filters">
+                <form autocomplete="off" action="/record/facultys" method="post">
+                    <div>
+                        <input type="text" name="search_roll_number" value=" " />
+                        <span>&nbsp;Faculty Id</span>
+                    </div>
+                    <div>
+                        <select name="search_department" id="search_department">
+                            <option value=" " hidden selected></option>
+                            <option value="CSE"> Computer Science &amp; Engineering</option>
+                            <option value="MECH">Mechanical Engineering</option>
+                            <option value="ECE">Electronics &amp; Communications Engineering</option>
+                            <option value="CIVIL">Civil Engineering</option>
+                            <option value="EEE">Electrical &amp; Electronics Engineering
+                            </option>
+                        </select>
+                        <span>&nbsp;Department</span>
+                    </div>
+                    <div><button type="submit">Search</button></div>
+
+                </form>
+
+            </div>
+            <div class="faculty-recod-details">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Faculty ID</th>
+                            <th>Department</th>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Date Issued</th>
+                            <th>Validatation Untill</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% for(var i=0; i < facultys.length; i++) { %>
+                            <tr>
+                                <td>
+                                    <%= facultys[i].roll_number %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].department %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].book_id %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].book_title %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].date %>
+                                </td>
+                                <td>
+                                    <%= facultys[i].validation_date %>
+                                </td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <% if(facultys.length == 0) { %>
+                    <p id='no-record-found-p'>No Record Found</p>
+                <% } %>
+            </div>
+    </div>
+
+
+    <!--Template Ending-->
+    </div>
+    </div>
+    <script src="/js/time.js"></script>
+    <script src="/js/RecActive.js"></script>
+    </body>
+
+    </html>
